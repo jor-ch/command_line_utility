@@ -9,40 +9,41 @@
 bool checkAnagram(std::string &s1, std::string &s2)
 {
     std::unordered_map<char, int> s1CharFreq{}; // this checks what characters are in s1, and the frequency of each character used
-    s1.erase(std::remove_if(s1.begin(), s1.end(),
-                            [](unsigned char c)
-                            { return !std::isalnum(c); }),
-             s1.end());
-    s2.erase(std::remove_if(s2.begin(), s2.end(),
-                            [](unsigned char c)
-                            { return !std::isalnum(c); }),
-             s2.end());
-    int s1Len = s1.length();
-    int s2Len = s2.length();
-    if (s1Len != s2Len)
-    {
-        std::cout << "Both strings, after removing non alnum characters, have unequal length" << std::endl;
-        return false;
-    }
+    size_t s1Len = 0, s2Len = 0;
     for (char c : s1)
     {
         if (std::isalnum(static_cast<unsigned char>(c)))
+        {
+            c = std::tolower(static_cast<unsigned char>(c));
             s1CharFreq[c]++;
+            s1Len++;
+        }
     }
     // check if s2 has the same char and freq
     for (char c : s2)
     {
-        if (s1CharFreq.count(c))
+        if (std::isalnum(static_cast<unsigned char>(c)))
         {
-            s1CharFreq[c]--;
-            if (s1CharFreq[c] < 0)
-                return false; // used more of the char than s1, so not anagram
+            c = std::tolower(static_cast<unsigned char>(c));
+            s2Len++;
+            if (s1CharFreq.count(c))
+            {
+                s1CharFreq[c]--;
+                if (s1CharFreq[c] < 0)
+                    return false; // used more of the char than s1, so not anagram
+            }
+            else
+            {
+                return false; // s2 has a char that is not in s1
+            }
         }
         else
         {
-            return false; // s2 has a char that is not in s1
+            continue; // ignore non-alphanumeric characters
         }
     }
+    if (s1Len != s2Len)
+        return false; // if the length of the two strings are different, then they cannot be anagrams
     return true;
 }
 
