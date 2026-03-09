@@ -52,10 +52,6 @@ bool checkContinue()
     std::cout << "continue? y/n" << std::endl;
     while (true)
     {
-        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-        // input.clear();
-        // std::cin >> input;
-        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // since only the input is read, \n is left in buffer so we clear that
         std::getline(std::cin, input);
         if (input != "y" && input != "n")
         {
@@ -91,7 +87,6 @@ void anagramCheckerInterface()
         std::cout << "string 2 is " << string2 << std::endl;
         isAnagram = checkAnagram(string1, string2);
         std::cout << "Both strings given are " << (isAnagram ? " " : "NOT ") << "anagrams!" << std::endl;
-        // std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         if (!checkContinue())
             return;
     }
