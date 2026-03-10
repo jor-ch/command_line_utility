@@ -9,8 +9,8 @@ void displayMenu()
 {
     std::cout << "===== UTILITY PROGRAM MENU =====" << std::endl;
     std::cout << "1. Basic Calculator" << std::endl;
-    std::cout << "2. Temperature converter" << std::endl;
-    std::cout << "3. Palindrome checker" << std::endl;
+    std::cout << "2. Temperature converter (currently unavailable!)" << std::endl;
+    std::cout << "3. Palindrome checker (currently unavailable!)" << std::endl;
     std::cout << "4. Anagram checker" << std::endl;
     std::cout << "5. EXIT" << std::endl;
 }
