@@ -107,4 +107,23 @@ void basicCalculatorInterface()
     std::cout << "Please leave a space between the numbers and operators!" << std::endl;
     std::string input;
     std::optional<double> result = std::nullopt;
+    while (true)
+    {
+        std::cout << "Enter the statement:" << std::endl;
+        std::getline(std::cin, input);
+        result = performOperation(input);
+        if (result.has_value())
+        {
+            std::cout << "Result is " << result.value() << std::endl;
+        }
+        else
+        {
+            std::cout << "Operation failed!" << std::endl;
+        }
+        if (!checkContinue())
+        {
+            std::cout << "terminating program!" << std::endl;
+            return;
+        }
+    }
 }
