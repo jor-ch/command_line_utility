@@ -4,6 +4,7 @@
 #include <sstream>
 
 void anagramCheckerInterface();
+void basicCalculatorInterface();
 void displayMenu()
 {
     std::cout << "===== UTILITY PROGRAM MENU =====" << std::endl;
@@ -54,6 +55,9 @@ int main()
 
         switch (userChoice)
         {
+        case 1:
+            basicCalculatorInterface();
+            break;
         case 4:
             anagramCheckerInterface();
             break;
