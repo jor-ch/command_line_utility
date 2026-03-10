@@ -3,8 +3,10 @@
 #include <limits>
 #include <sstream>
 
-void anagramCheckerInterface();
 void basicCalculatorInterface();
+void temperatureConverterInterface();
+
+void anagramCheckerInterface();
 void displayMenu()
 {
     std::cout << "===== UTILITY PROGRAM MENU =====" << std::endl;
