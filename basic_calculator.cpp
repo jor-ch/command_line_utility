@@ -6,6 +6,14 @@
 #include <optional>
 #include <vector>
 #include <unordered_map>
+
+enum class Operator
+{
+    ADD,
+    SUBTRACT,
+    MULTIPLY,
+    DIVIDE
+};
 void basicCalculatorInterface()
 {
     std::cout << "Welcome to Basic Calculator! Here, we will perform basic arithmetic operations!" << std::endl;
