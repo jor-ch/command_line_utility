@@ -11,3 +11,5 @@ private:
     double var1;
     int var2;
 };
+
+bool checkContinue();

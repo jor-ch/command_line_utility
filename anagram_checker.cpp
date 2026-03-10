@@ -5,6 +5,9 @@
 #include <cctype>
 #include <algorithm>
 #include <limits>
+#include "includes/utilities.h"
+
+bool checkContinue();
 
 bool checkAnagram(std::string &s1, std::string &s2)
 {
@@ -45,28 +48,6 @@ bool checkAnagram(std::string &s1, std::string &s2)
     if (s1Len != s2Len)
         return false; // if the length of the two strings are different, then they cannot be anagrams
     return true;
-}
-
-bool checkContinue()
-{
-    std::string input;
-    std::cout << "continue? y/n" << std::endl;
-    while (true)
-    {
-        std::getline(std::cin, input);
-        if (input != "y" && input != "n")
-        {
-            std::cout << "invalid option! put either y or n!" << std::endl;
-        }
-        else if (input == "y")
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 }
 
 void anagramCheckerInterface()
