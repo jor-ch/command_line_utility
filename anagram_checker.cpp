@@ -87,7 +87,7 @@ void anagramCheckerInterface()
         std::getline(std::cin, string2);
         std::cout << "string 2 is " << string2 << std::endl;
         isAnagram = checkAnagram(string1, string2);
-        std::cout << "Both strings given are " << (isAnagram ? " " : "NOT ") << "anagrams!" << std::endl;
+        std::cout << "Both strings given are " << (isAnagram ? "" : "NOT ") << "anagrams!" << std::endl;
         if (!checkContinue())
             return;
     }
