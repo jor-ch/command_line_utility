@@ -42,7 +42,25 @@ void temperatureConverterInterface()
     std::cout << "Note: currently, we only support conversion between Celsius and Fahrenheit!" << std::endl;
     std::cout << "Format of input is temperature value and C/F, to indicate if temperature is in Celsius or Farenheit" << std::endl;
     std::cout << "Example: 32.5 C  (this is to convert 32.5 degrees celsius to farenheit)" << std::endl;
-    std::cout << "Please enter the temperature value, followed by letter:" << std::endl;
+    std::cout << "Please enter the temperature value, followed by a space then letter:" << std::endl;
     std::string input;
     std::optional<double> result = std::nullopt;
+    while (true)
+    {
+        std::getline(std::cin, input);
+        result = performConversion(input);
+        if (result.has_value())
+        {
+            std::cout << "Result is " << result.value() << std::endl;
+        }
+        else
+        {
+            std::cout << "Conversion failed!" << std::endl;
+        }
+        if (!checkContinue())
+        {
+            std::cout << "terminating program!" << std::endl;
+            return;
+        }
+    }
 }
