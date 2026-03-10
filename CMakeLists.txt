@@ -7,7 +7,8 @@ main.cpp
 anagram_checker.cpp
 includes/utilities.cpp
 basic_calculator.cpp
-temperature_converter.cpp)
+temperature_converter.cpp
+palindrome_checker.cpp)
 
 set(HEADERS
 includes/utilities.h)
