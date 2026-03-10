@@ -11,7 +11,7 @@ void displayMenu()
 {
     std::cout << "===== UTILITY PROGRAM MENU =====" << std::endl;
     std::cout << "1. Basic Calculator" << std::endl;
-    std::cout << "2. Temperature converter (currently unavailable!)" << std::endl;
+    std::cout << "2. Temperature converter" << std::endl;
     std::cout << "3. Palindrome checker (currently unavailable!)" << std::endl;
     std::cout << "4. Anagram checker" << std::endl;
     std::cout << "5. EXIT" << std::endl;
@@ -45,10 +45,6 @@ int getChoice()
 }
 int main()
 {
-    test test1;
-    test1.printVar();
-    std::cout << "test" << std::endl;
-
     std::cout << "Welcome to utility menu! here are the options:" << std::endl;
     while (true)
     {
@@ -59,6 +55,9 @@ int main()
         {
         case 1:
             basicCalculatorInterface();
+            break;
+        case 2:
+            temperatureConverterInterface();
             break;
         case 4:
             anagramCheckerInterface();
