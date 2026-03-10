@@ -33,16 +33,42 @@ std::optional<double> performOperation(std::string input)
     std::unordered_map<Operator, std::vector<int>> operatorsUsed{}; // 0 for +, 1 for -, 2 for *, 3 for /, idea of map here is to check which tokens use which operators, and how many times each operator is used.
     for (int i = 0; i < tokens.size(); i = i + 2)
     {
-        try
+        // before converting the token, we need to see if the token is a combination of
+        // number and non-number, for example, 2*3, which is an invalid statement for our
+        // calculator since we require a space between numbers and operators
+        std::string &numToken = tokens[i];
+        size_t startIdx = 0;
+        if (numToken[0] == '-')
         {
-            double num = stod(tokens[i]);
-            numbersUsed.push_back(num);
+            startIdx = 1; // if the token starts with a negative sign, we want to ignore that when checking if the rest of the token is a valid number
         }
-        catch (...)
+        bool valid = true;
+        int decimalCount = 0;
+        for (size_t i = startIdx; i < numToken.length(); i++)
+        {
+            if (numToken[i] == '.')
+            {
+                decimalCount++;
+                if (decimalCount > 1)
+                {
+                    valid = false; // since we only allow maximum one decimal point in a number
+                    break;
+                }
+            }
+            else if (!std::isdigit(static_cast<unsigned char>(numToken[i])))
+            {
+                valid = false;
+                break;
+            }
+        }
+        if (!valid)
         {
             std::cout << "invalid statement! Token number " << i + 1 << " is not a valid number!" << std::endl;
             return std::nullopt;
         }
+
+        double num = stod(tokens[i]);
+        numbersUsed.push_back(num);
     }
     for (int i = 1; i < tokens.size(); i = i + 2)
     {
@@ -69,6 +95,7 @@ std::optional<double> performOperation(std::string input)
             return std::nullopt;
         }
     }
+
     // plan here is to deal with all the multiplication and division first, then modify numbersUsed such that after
     // multiplication and division, second number is the result, first number is 0 (since the operators happen sequentially), since multiplication and division
     // are higher precedence than addition and subtraction, we can just add and subtract the numbers in numbersUsed to get the final result
