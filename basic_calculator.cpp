@@ -70,7 +70,7 @@ std::optional<double> performOperation(std::string input)
         }
     }
     // plan here is to deal with all the multiplication and division first, then modify numbersUsed such that after
-    // multiplication and division, second number is the result, first number is 0, since multiplication and division
+    // multiplication and division, second number is the result, first number is 0 (since the operators happen sequentially), since multiplication and division
     // are higher precedence than addition and subtraction, we can just add and subtract the numbers in numbersUsed to get the final result
     for (int i : operatorsUsed[Operator::MULTIPLY])
     {
@@ -80,6 +80,11 @@ std::optional<double> performOperation(std::string input)
     }
     for (int i : operatorsUsed[Operator::DIVIDE])
     {
+        if (numbersUsed[i / 2 + 1] == 0)
+        {
+            std::cout << "invalid statement! division by zero detected!" << std::endl;
+            return std::nullopt;
+        }
         double result = numbersUsed[i / 2] / numbersUsed[i / 2 + 1];
         numbersUsed[i / 2] = 0;
         numbersUsed[i / 2 + 1] = result;
