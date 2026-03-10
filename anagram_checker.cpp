@@ -7,8 +7,6 @@
 #include <limits>
 #include "includes/utilities.h"
 
-bool checkContinue();
-
 bool checkAnagram(std::string &s1, std::string &s2)
 {
     std::unordered_map<char, int> s1CharFreq{}; // this checks what characters are in s1, and the frequency of each character used
