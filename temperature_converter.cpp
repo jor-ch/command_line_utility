@@ -1,6 +1,40 @@
 #include <iostream>
 #include "includes/utilities.h"
 #include <optional>
+#include <sstream>
+
+std::optional<double> performConversion(std::string input)
+{
+    std::stringstream ss(input);
+    double inputValue;
+    char inputUnit;
+    std::string extraToken; // use this to check if there are too many tokens in the input
+    if (!(ss >> inputValue >> inputUnit))
+    {
+        std::cout << "invalid input! remember to put a space between the temperature value and unit!" << std::endl;
+        return std::nullopt;
+    }
+    if (ss >> extraToken)
+    {
+        std::cout << "invalid input! too many tokens!" << std::endl;
+        return std::nullopt;
+    }
+    if (inputUnit == 'C' || inputUnit == 'c')
+    {
+        // convert to fahrenheit
+        return inputValue * CELSIUS_TO_FAHRENHEIT_MULTIPLIER + CELSIUS_TO_FAHRENHEIT_CONSTANT;
+    }
+    else if (inputUnit == 'F' || inputUnit == 'f')
+    {
+        // convert to celsius
+        return (inputValue - CELSIUS_TO_FAHRENHEIT_CONSTANT) / CELSIUS_TO_FAHRENHEIT_MULTIPLIER;
+    }
+    else
+    {
+        std::cout << "invalid input! temperature unit must be either C or F!" << std::endl;
+        return std::nullopt;
+    }
+}
 
 void temperatureConverterInterface()
 {
