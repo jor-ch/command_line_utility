@@ -6,7 +6,8 @@ set(SOURCES
 main.cpp
 anagram_checker.cpp
 includes/utilities.cpp
-basic_calculator.cpp)
+basic_calculator.cpp
+temperature_converter.cpp)
 
 set(HEADERS
 includes/utilities.h)
