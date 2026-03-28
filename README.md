@@ -39,18 +39,30 @@ The utility program currently supports the following tools:
 
 ## Project Structure
 COMMAND_LINE_UTILITY/
+
 │
 ├── includes/
+
 │   ├── utilities.h
+
 │   └── utilities.cpp
+
 │
+
 ├── main.cpp
+
 ├── basic_calculator.cpp
+
 ├── temperature_converter.cpp
+
 ├── palindrome_checker.cpp
+
 ├── anagram_checker.cpp
+
 │
+
 ├── CMakeLists.txt
+
 └── README.md
 
 ## How it works
