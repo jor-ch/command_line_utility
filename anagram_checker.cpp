@@ -7,6 +7,20 @@
 #include <limits>
 #include "includes/utilities.h"
 
+/**
+ * @brief Checks if two strings are anagrams of each other
+ * @details The function first counts the frequency of each alphanumeric character in the
+ * first string, ignoring case and non-alphanumeric characters. Then it checks
+ * if the second string has the same characters with the same frequency. If any
+ * character in the second string has a different frequency than in the first string,
+ * or if there are characters in the second string that are not in the first string,
+ * then the function returns false. Finally, it also checks if the total number of
+ * alphanumeric characters in both strings are the same, since if they are different,
+ * then they cannot be anagrams.
+ * @param s1 First string to compare
+ * @param s2 Second string to compare
+ * @return true if the strings are anagrams, false otherwise
+ */
 bool checkAnagram(std::string &s1, std::string &s2)
 {
     std::unordered_map<char, int> s1CharFreq{}; // this checks what characters are in s1, and the frequency of each character used
@@ -48,6 +62,14 @@ bool checkAnagram(std::string &s1, std::string &s2)
     return true;
 }
 
+/**
+ * @brief Provides the user interface for the anagram checker
+ * @details This function shows instructions to the user, takes in the input twice for the
+ * two strings to compare, calls checkAnagram to check if the two strings are anagrams,
+ * and displays the result. It also checks if the user wants to continue using the
+ * anagram checker after each operation, and terminates the interface if the
+ * user does not want to continue, returning to the main menu.
+ */
 void anagramCheckerInterface()
 {
     std::cout << "Welcome to Anagram checker! Here, we will check if two strings are anagrams!" << std::endl;

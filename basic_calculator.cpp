@@ -7,6 +7,10 @@
 #include <vector>
 #include <unordered_map>
 
+/**
+ * @brief Enum class representing different arithmetic operators
+ *
+ */
 enum class Operator
 {
     ADD,
@@ -15,6 +19,21 @@ enum class Operator
     DIVIDE
 };
 
+/**
+ * @brief Performs the arithmetic operation on the given input string
+ * @param input The input string taken from user input from function basicCalculatorInterface,
+ *  which should be in the format of "number operator number operator number ...", for
+ * example, "2 + 3 * 4 - 5 / 6".
+ * The function takes in the input string, checks if the input is valid, and
+ * performs the arithmetic operations according to the order of operations
+ * (Multiplication/Division first, then Addition/Subtraction). The function
+ * first checks for multiplication and division, then addition and subtraction.
+ * If the input is invalid at any point, it returns std::nullopt.
+ * Note that for this calculator, parentheses are not supported, and the
+ * operations are performed sequentially from left to right, with multiplication
+ * and division having higher precedence than addition and subtraction.
+ * @return The result of the operation or std::nullopt if the input is invalid
+ */
 std::optional<double> performOperation(std::string input)
 {
     std::vector<std::string> tokens{};
@@ -131,6 +150,14 @@ std::optional<double> performOperation(std::string input)
     }
     return finalResult;
 }
+
+/**
+ * @brief Provides the user interface for the basic calculator
+ * Shows instructions to the user, takes in the input, calls performOperation to
+ * get the result, and displays the result. It also checks if the user wants to
+ * continue using the calculator after each operation, and terminates the interface if the
+ * user does not want to continue, returning to the main menu.
+ */
 void basicCalculatorInterface()
 {
     std::cout << "Welcome to Basic Calculator! Here, we will perform basic arithmetic operations!" << std::endl;

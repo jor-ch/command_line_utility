@@ -7,6 +7,11 @@ void basicCalculatorInterface();
 void temperatureConverterInterface();
 void palindromeCheckerInterface();
 void anagramCheckerInterface();
+
+/**
+ * @brief Displays the main menu options
+ * @details This function prints the available options for the utility program.
+ */
 void displayMenu()
 {
     std::cout << "===== UTILITY PROGRAM MENU =====" << std::endl;
@@ -16,6 +21,14 @@ void displayMenu()
     std::cout << "4. Anagram checker" << std::endl;
     std::cout << "5. EXIT" << std::endl;
 }
+
+/**
+ * @brief Gets the user's choice from the menu
+ * @details This function prompts the user to enter a choice and validates it. It keeps
+ * prompting the user until a valid choice (1-5) is entered. If the input is not a number
+ * or is out of range, it displays an error message and prompts again.
+ * @return The valid choice entered by the user
+ */
 int getChoice()
 {
     std::string input;
